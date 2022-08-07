@@ -2,6 +2,7 @@ extends Area2D
 
 
 onready var SliceTween = $SliceTween
+onready var CPUParticles2DInstance = $CPUParticles2D
 
 
 
@@ -42,10 +43,12 @@ func _ready():
 func _on_Fruit_area_entered(area):
 	if area.is_in_group("KNIVES"):
 		EventManager.fruit_hit_event()
+		CPUParticles2DInstance.texture = $Sprite.texture
+		CPUParticles2DInstance.emitting = true
 		
 		# disable collision shapes
-		$CollisionShape2D.disabled = true
-		
+		CPUParticles2DInstance.disabled = true
+				
 		SliceTween.start()
 
 
