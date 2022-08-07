@@ -2,6 +2,7 @@ extends Area2D
 
 
 onready var SpriteButton = $TouchScreenButton
+onready var BounceTween = $BounceTween
 
 
 var is_paused = false
@@ -32,6 +33,24 @@ func position_knife():
 	
 	
 	
+	
+func _physics_process(delta):
+	if !is_in_flight and !BounceTween.is_active():
+		print("play")
+		BounceTween.start()
+		
+	if is_paused:
+		return
+		
+	if !is_in_flight and Input.is_action_just_pressed("ui_up"):
+		initiate_flight()
+
+	if !is_in_flight and !Input.is_action_just_pressed("ui_up"):
+		return
+	
+	
+	position.y -= SPEED * delta
+
 
 
 func _on_TouchScreenButton_pressed():
