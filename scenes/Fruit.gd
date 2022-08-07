@@ -60,7 +60,7 @@ func register_animation():
 			"scale",
 			$Sprite.get_scale(),
 			Vector2(0, 0),
-			.5,
+			.8,
 			Tween.TRANS_QUAD,
 			Tween.EASE_OUT
 	)

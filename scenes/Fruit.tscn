@@ -36,8 +36,8 @@ angular_velocity = 10.0
 angular_velocity_random = 0.5
 linear_accel = 4.0
 linear_accel_random = 0.5
-scale_amount = 0.01
-scale_amount_random = 0.01
+scale_amount = 0.02
+scale_amount_random = 0.02
 
 [connection signal="area_entered" from="." to="." method="_on_Fruit_area_entered"]
 [connection signal="tween_all_completed" from="SliceTween" to="." method="_on_SliceTween_tween_all_completed"]
