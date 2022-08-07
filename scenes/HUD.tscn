@@ -75,3 +75,7 @@ margin_top = 18.0
 margin_right = 114.0
 margin_bottom = 32.0
 text = "LEVEL"
+
+[node name="LevelTween" type="Tween" parent="."]
+
+[node name="SubLevelTween" type="Tween" parent="."]
