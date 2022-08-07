@@ -11,7 +11,23 @@ config_version=4
 [application]
 
 config/name="fruity"
+run/main_scene="res://scenes/Game.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+EventManager="*res://scripts/EventManager.gd"
+GameManager="*res://scripts/GameManager.gd"
+
+[display]
+
+window/size/width=380
+window/size/height=700
+window/handheld/orientation="portrait"
+
+[input_devices]
+
+pointing/emulate_touch_from_mouse=true
 
 [physics]
 
