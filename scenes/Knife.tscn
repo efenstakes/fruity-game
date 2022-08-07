@@ -6,7 +6,7 @@
 [sub_resource type="CapsuleShape2D" id=1]
 height = 52.0
 
-[node name="Knife" type="Area2D" groups=["KNIFE"]]
+[node name="Knife" type="Area2D" groups=["KNIFE", "KNIVES"]]
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
