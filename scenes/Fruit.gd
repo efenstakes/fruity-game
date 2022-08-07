@@ -3,6 +3,7 @@ extends Area2D
 
 onready var SliceTween = $SliceTween
 onready var CPUParticles2DInstance = $CPUParticles2D
+onready var CollisionShape = $CollisionShape2D
 
 
 
@@ -47,8 +48,8 @@ func _on_Fruit_area_entered(area):
 		CPUParticles2DInstance.emitting = true
 		
 		# disable collision shapes
-		CPUParticles2DInstance.disabled = true
-				
+		CollisionShape.disabled = true
+		
 		SliceTween.start()
 
 
