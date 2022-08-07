@@ -48,3 +48,16 @@ func initiate_flight():
 	# signal that we are in flight
 	EventManager.knife_flight_started_event()
 
+
+
+func _on_VisibilityNotifier2D_screen_exited():
+	print("OOOPS, OUTSIDE SCREEN")
+	is_in_flight = false
+	
+	is_paused = true
+	yield( get_tree().create_timer(.3, false), "timeout" )
+	is_paused = false
+	
+	position = initial_position
+	# signal that flight just ended
+	EventManager.knife_flight_ended_event()
