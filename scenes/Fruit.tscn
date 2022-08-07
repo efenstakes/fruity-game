@@ -16,4 +16,7 @@ texture = ExtResource( 1 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
 
+[node name="SliceTween" type="Tween" parent="."]
+
 [connection signal="area_entered" from="." to="." method="_on_Fruit_area_entered"]
+[connection signal="tween_all_completed" from="SliceTween" to="." method="_on_SliceTween_tween_all_completed"]
