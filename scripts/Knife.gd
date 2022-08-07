@@ -23,12 +23,14 @@ func _ready():
 	position_knife()
 	initial_position = position
 	initial_button_position = SpriteButton.position
+	register_animations()
+
 
 
 func position_knife():	
 	var screen_size: Vector2 = get_viewport().size
 	position.x = screen_size.x/2
-	position.y = screen_size.y - ( screen_size.y / 10 )
+	position.y = screen_size.y - ( screen_size.y / 7 )
 	
 	
 	
@@ -36,7 +38,6 @@ func position_knife():
 	
 func _physics_process(delta):
 	if !is_in_flight and !BounceTween.is_active():
-		print("play")
 		BounceTween.start()
 		
 	if is_paused:
@@ -63,10 +64,10 @@ func _on_TouchScreenButton_pressed():
 
 
 func initiate_flight():
+	BounceTween.stop_all()
 	is_in_flight = true
 	# signal that we are in flight
 	EventManager.knife_flight_started_event()
-
 
 
 func _on_VisibilityNotifier2D_screen_exited():
@@ -80,3 +81,20 @@ func _on_VisibilityNotifier2D_screen_exited():
 	position = initial_position
 	# signal that flight just ended
 	EventManager.knife_flight_ended_event()
+
+
+
+func register_animations():
+	BounceTween.interpolate_property(
+		self,
+		"position",
+		Vector2(
+			position.x, 
+			position.y + 20 
+		),
+		initial_position,
+		2.5,
+		Tween.EASE_IN_OUT, # TRANS_QUINT, # Tween.EASE_IN,
+		Tween.EASE_OUT_IN # Tween.TRANS_QUART
+	)
+	BounceTween.set_repeat(true)
