@@ -46,4 +46,5 @@ func _on_TouchScreenButton_pressed():
 func initiate_flight():
 	is_in_flight = true
 	# signal that we are in flight
+	EventManager.knife_flight_started_event()
 
