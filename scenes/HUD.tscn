@@ -31,14 +31,16 @@ size_flags_vertical = 3
 margin_right = 113.0
 margin_bottom = 14.0
 text = "LEVEL"
+align = 1
 
 [node name="Level" type="Label" parent="MarginContainer/Display/LevelDisplay"]
 margin_top = 18.0
 margin_right = 113.0
 margin_bottom = 32.0
 text = "LEVEL"
+align = 1
 
-[node name="LevelDisplay2" type="VBoxContainer" parent="MarginContainer/Display"]
+[node name="HitsDisplay" type="VBoxContainer" parent="MarginContainer/Display"]
 margin_left = 117.0
 margin_right = 230.0
 margin_bottom = 684.0
@@ -46,16 +48,18 @@ rect_min_size = Vector2( 0, 80 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Label" type="Label" parent="MarginContainer/Display/LevelDisplay2"]
+[node name="Label" type="Label" parent="MarginContainer/Display/HitsDisplay"]
 margin_right = 113.0
 margin_bottom = 14.0
-text = "LEVEL"
+text = "HITS"
+align = 1
 
-[node name="Level" type="Label" parent="MarginContainer/Display/LevelDisplay2"]
+[node name="Hits" type="Label" parent="MarginContainer/Display/HitsDisplay"]
 margin_top = 18.0
 margin_right = 113.0
 margin_bottom = 32.0
-text = "LEVEL"
+text = "0"
+align = 1
 
 [node name="SubLevelDisplay" type="VBoxContainer" parent="MarginContainer/Display"]
 margin_left = 234.0
@@ -69,13 +73,20 @@ size_flags_vertical = 3
 margin_right = 114.0
 margin_bottom = 14.0
 text = "LEVEL"
+align = 1
 
 [node name="SubLevel" type="Label" parent="MarginContainer/Display/SubLevelDisplay"]
 margin_top = 18.0
 margin_right = 114.0
 margin_bottom = 32.0
 text = "LEVEL"
+align = 1
 
 [node name="LevelTween" type="Tween" parent="."]
 
 [node name="SubLevelTween" type="Tween" parent="."]
+
+[node name="HitsTween" type="Tween" parent="."]
+
+[connection signal="tween_all_completed" from="LevelTween" to="." method="_on_LevelTween_tween_all_completed"]
+[connection signal="tween_all_completed" from="SubLevelTween" to="." method="_on_SubLevelTween_tween_all_completed"]
