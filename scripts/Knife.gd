@@ -23,7 +23,9 @@ func _ready():
 	position_knife()
 	initial_position = position
 	initial_button_position = SpriteButton.position
+	
 	register_animations()
+	
 
 
 
@@ -85,16 +87,38 @@ func _on_VisibilityNotifier2D_screen_exited():
 
 
 func register_animations():
+	print("new pos after 0 ", position, " initial ", initial_position.y)
 	BounceTween.interpolate_property(
 		self,
 		"position",
-		Vector2(
-			position.x, 
-			position.y + 20 
-		),
 		initial_position,
-		2.5,
-		Tween.EASE_IN_OUT, # TRANS_QUINT, # Tween.EASE_IN,
-		Tween.EASE_OUT_IN # Tween.TRANS_QUART
+		Vector2(
+			initial_position.x, 
+			initial_position.y + 20 
+		),
+		1.5,
+		Tween.TRANS_LINEAR,
+		Tween.TRANS_LINEAR
+#		Tween.EASE_IN_OUT, # TRANS_QUINT, # Tween.EASE_IN,
+#		Tween.EASE_OUT_IN # Tween.TRANS_QUART
 	)
+	yield(BounceTween, "tween_completed")
+	print("new pos after 1 ", position.y)
+	BounceTween.interpolate_property(
+		self,
+		"position",
+		position,
+#		Vector2(
+#			initial_position.x, 
+#			initial_position.y + 20 
+#		),
+		initial_position,
+		1.5,
+		Tween.TRANS_LINEAR,
+		Tween.TRANS_LINEAR
+#		Tween.EASE_IN_OUT, # TRANS_QUINT, # Tween.EASE_IN,
+#		Tween.EASE_OUT_IN # Tween.TRANS_QUART
+	)
+	yield(BounceTween, "tween_completed")
+	print("new pos after 2 ", position.y)
 	BounceTween.set_repeat(true)
